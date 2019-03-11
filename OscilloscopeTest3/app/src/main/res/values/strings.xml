@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">OscilloscopeTest3</string>
+    <string-array name="SCPI">
+        <item>仪器识别码查询</item>
+        <item>清除状态</item>
+        <item>复位</item>
+        <item>标准事件状态使能</item>
+        <item>标准事件状态使能查询</item>
+        <item>操作完成</item>
+        <item>操作完成查询</item>
+        <item>服务请求使能</item>
+        <item>服务请求使能查询</item>
+        <item>读状态字节查询</item>
+        <item>自检查询</item>
+        <item>等待操作完成</item>
+    </string-array>
+</resources>
