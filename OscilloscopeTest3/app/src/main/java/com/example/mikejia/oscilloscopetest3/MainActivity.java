@@ -37,14 +37,11 @@ public class MainActivity extends AppCompatActivity {
     EditText port_EditText;//端口对象
     EditText receive_EditText;
     Button button_connect;//链接服务器按钮对象
-//    Button button_disconnect;//断开服务器按钮
-//    Button button_message;//功能按键
     Socket socket = null;// Socket变量
     boolean buttontitle = true;//定义一个逻辑变量,用于判断连接服务器按钮状态
     boolean RD = false;//用于控制取数据线程是否执行
     OutputStream OutputStream = null;//定义数据输出流,用于发出去
     InputStream InputStream = null;//定义数据输入流,用于写进来
-    public static final String bm = "GBK";//定义编码
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -133,21 +130,8 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-//        button_disconnect = findViewById(R.id.button_disconnect);
-//        button_message = findViewById(R.id.button_message);
     }
 
-//    //发送数据按钮按下
-//    public void play(View view) {
-//        //验证编辑框用户输入是否合法
-//        if (thisif()) {
-//            //启动一个新的线程,用于发送数据
-//            ThreadSendCLS t1 = new ThreadSendCLS();
-//            t1.start();
-//        } else {
-//            return;
-//        }
-//    }
 
     //链接按钮按下
     public void connect(View view) {
@@ -179,20 +163,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
-//    //断开按钮按下
-//    public void disconnect(View view) {
-//        try {
-//            //取消socket
-//            socket.close();
-//            //socket设置为空
-//            socket = null;
-//            //读数据线程不执行
-//            RD = false;
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
 
     //用线程创建Socket链接
     class Connect_Thread extends Thread {
@@ -277,7 +247,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*IDN?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*IDN?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -292,7 +262,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*CLS".toString() + "\r\n").getBytes());
+                OutputStream.write(("*CLS\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -306,7 +276,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*RST".toString() + "\r\n").getBytes());
+                OutputStream.write(("*RST\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -320,7 +290,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*ESE".toString() + "\r\n").getBytes());
+                OutputStream.write(("*ESE\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -334,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*ESE?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*ESE?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -348,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*ESR?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*ESR?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -362,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*OPC".toString() + "\r\n").getBytes());
+                OutputStream.write(("*OPC\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -376,7 +346,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*OPC?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*OPC?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -390,7 +360,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*SRE".toString() + "\r\n").getBytes());
+                OutputStream.write(("*SRE\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -404,7 +374,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*SRE?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*SRE?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -418,7 +388,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*STB?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*STB?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -432,7 +402,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*TST?".toString() + "\r\n").getBytes());
+                OutputStream.write(("*TST?\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
@@ -446,7 +416,7 @@ public class MainActivity extends AppCompatActivity {
         public void run() {
             try {
                 //用输出流发送数据
-                OutputStream.write(("*WAI".toString() + "\r\n").getBytes());
+                OutputStream.write(("*WAI\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {
