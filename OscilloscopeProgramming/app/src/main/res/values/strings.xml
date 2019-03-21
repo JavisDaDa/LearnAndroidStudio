@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">OscilloscopeProgramming</string>
+    <string-array name="SCPI">
+    <item>*IDN？</item>
+    <item>*CLS</item>
+    <item>*RST</item>
+    <item>*ESE</item>
+    <item>*ESE？</item>
+    <item>*ESR?</item>
+    <item>*OPC</item>
+    <item>*OPC？</item>
+    <item>*SRE</item>
+    <item>*SRE？</item>
+    <item>*STB？</item>
+    <item>*TST？</item>
+    <item>*WAI</item>
+    </string-array>
+</resources>
