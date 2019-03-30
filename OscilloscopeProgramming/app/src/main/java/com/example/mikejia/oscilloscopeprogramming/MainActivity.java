@@ -97,62 +97,135 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 if(thisif()){
-                    String text= spinner.getItemAtPosition(i).toString();
-                    Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
-                    switch (i){
-                        case 0:
-                            ThreadSendIDN t0 = new ThreadSendIDN();
-                            t0.start();
-                            break;
-                        case 1:
-                            ThreadSendCLS t1 = new ThreadSendCLS();
-                            t1.start();
-                            break;
-                        case 2:
-                            ThreadSendRST t2 = new ThreadSendRST();
-                            t2.start();
-                            break;
-                        case 3:
-                            ThreadSendESE t3 = new ThreadSendESE();
-                            t3.start();
-                            break;
-                        case 4:
-                            ThreadSendESE2 t4 = new ThreadSendESE2();
-                            t4.start();
-                            break;
-                        case 5:
-                            ThreadSendESR2 t5 = new ThreadSendESR2();
-                            t5.start();
-                            break;
-                        case 6:
-                            ThreadSendOPC t6 = new ThreadSendOPC();
-                            t6.start();
-                            break;
-                        case 7:
-                            ThreadSendOPC2 t7 = new ThreadSendOPC2();
-                            t7.start();
-                            break;
-                        case 8:
-                            ThreadSendSRE t8 = new ThreadSendSRE();
-                            t8.start();
-                            break;
-                        case 9:
-                            ThreadSendSRE2 t9 = new ThreadSendSRE2();
-                            t9.start();
-                            break;
-                        case 10:
-                            ThreadSendSTB2 t10 = new ThreadSendSTB2();
-                            t10.start();
-                            break;
-                        case 11:
-                            ThreadSendTST2 t11 = new ThreadSendTST2();
-                            t11.start();
-                            break;
-                        case 12:
-                            ThreadSendWAI t12 = new ThreadSendWAI();
-                            t12.start();
-                            break;
-                    }
+
+                        String text= spinner.getItemAtPosition(i).toString();
+                        Toast.makeText(MainActivity.this,text,Toast.LENGTH_SHORT).show();
+//                        //获取socket的输入流和输出流
+//                        InputStream = socket.getInputStream();
+//                        OutputStream = socket.getOutputStream();
+//
+//                        //新建一个线程读数据
+//                        ThreadReadData t13 = new ThreadReadData();
+                        switch (i){
+                            case 0:
+                                ThreadSendIDN t0 = new ThreadSendIDN();
+                                t0.start();
+//                                t13.start();
+                                break;
+                            case 1:
+                                ThreadSendCLS t1 = new ThreadSendCLS();
+                                t1.start();
+//                                t13.start();
+                                break;
+                            case 2:
+                                ThreadSendRST t2 = new ThreadSendRST();
+                                t2.start();
+//                                t13.start();
+                                break;
+                            case 3:
+                                ThreadSendESE t3 = new ThreadSendESE();
+                                t3.start();
+//                                t13.start();
+                                break;
+                            case 4:
+                                ThreadSendESE2 t4 = new ThreadSendESE2();
+                                t4.start();
+//                                t13.start();
+                                break;
+                            case 5:
+                                ThreadSendESR2 t5 = new ThreadSendESR2();
+                                t5.start();
+//                                t13.start();
+                                break;
+                            case 6:
+                                ThreadSendOPC t6 = new ThreadSendOPC();
+                                t6.start();
+//                                t13.start();
+                                break;
+                            case 7:
+                                ThreadSendOPC2 t7 = new ThreadSendOPC2();
+                                t7.start();
+//                                t13.start();
+                                break;
+                            case 8:
+                                ThreadSendSRE t8 = new ThreadSendSRE();
+                                t8.start();
+//                                t13.start();
+                                break;
+                            case 9:
+                                ThreadSendSRE2 t9 = new ThreadSendSRE2();
+                                t9.start();
+//                                t13.start();
+                                break;
+                            case 10:
+                                ThreadSendSTB2 t10 = new ThreadSendSTB2();
+                                t10.start();
+//                                t13.start();
+                                break;
+                            case 11:
+                                ThreadSendTST2 t11 = new ThreadSendTST2();
+                                t11.start();
+//                                t13.start();
+                                break;
+                            case 12:
+                                ThreadSendWAI t12 = new ThreadSendWAI();
+                                t12.start();
+//                                t13.start();
+                                break;
+                            case 13:
+                                ThreadSendAUToscale t13 = new ThreadSendAUToscale();
+                                t13.start();
+                                break;
+                            case 14:
+                                ThreadSendChanelProbe t14 = new ThreadSendChanelProbe();
+                                t14.start();
+                                break;
+                            case 15:
+                                ThreadSendChanelRange t15 = new ThreadSendChanelRange();
+                                t15.start();
+                                break;
+                            case 21:
+                                ThreadSendMeasureSource t21 = new ThreadSendMeasureSource();
+                                t21.start();
+                                break;
+                            case 22:
+                                ThreadSendMeasureFrequency t22 = new ThreadSendMeasureFrequency();
+                                t22.start();
+                                break;
+                            case 23:
+                                ThreadSendMeasureVpp t23 = new ThreadSendMeasureVpp();
+                                t23.start();
+                                break;
+                            case 24:
+                                ThreadSendWaveFormFormat t24 = new ThreadSendWaveFormFormat();
+                                t24.start();
+                                break;
+                            case 25:
+                                ThreadSendWaveFormPoints t25 = new ThreadSendWaveFormPoints();
+                                t25.start();
+                                break;
+                            case 26:
+                                ThreadSendWaveFormPreamble t26 = new ThreadSendWaveFormPreamble();
+                                t26.start();
+                                break;
+                            case 27:
+                                ThreadSendWaveFormData t27 = new ThreadSendWaveFormData();
+                                t27.start();
+                                break;
+                            case 28:
+                                ThreadSendAcquireType t28 = new ThreadSendAcquireType();
+                                t28.start();
+                                break;
+                            case 29:
+                                ThreadSendAcquireComplete t29 = new ThreadSendAcquireComplete();
+                                t29.start();
+                                break;
+                            case 30:
+                                ThreadSendDigitize t30 = new ThreadSendDigitize();
+                                t30.start();
+                                break;
+                        }
+
                 }else{
                     return;
                 }
@@ -166,7 +239,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     //发送数据按钮按下
-    public void play(View view){
+    public void play(View view) throws IOException{
         //验证用户编辑是否合法
         if(thisif()){
             //创建线程用于发送数据
@@ -184,12 +257,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //获取数据按钮按下
-    public void capture(View view){
-        ThreadCapture t0 = new ThreadCapture();
-        t0.start();
+    public void capture(View view) throws IOException{
+//        ThreadCapture t0 = new ThreadCapture();
+//        t0.start();
     }
     //绘图按钮按下
-    public void analyze(View view){
+    public void analyze(View view) throws IOException{
 //        ThreadAnalyze t0 = new ThreadAnalyze();
 //        t0.start();
         ThreadDraw t2 = new ThreadDraw();
@@ -229,28 +302,37 @@ public class MainActivity extends AppCompatActivity {
     //创建初始化线程
     class ThreadInitialize extends Thread{
         public void run(){
-            ThreadSendRST t0 = new ThreadSendRST();
-            t0.start();
-            ThreadSendCLS t1 = new ThreadSendCLS();
-            t1.start();
-            ThreadSendIDN t2 = new ThreadSendIDN();
-            t2.start();
-            ThreadSendAUToscale t3 = new ThreadSendAUToscale();
-            t3.start();
-            ThreadSendChanelProbe t4 = new ThreadSendChanelProbe();
-            t4.start();
-            ThreadSendChanelRange t10 = new ThreadSendChanelRange();
-            t10.start();
-            ThreadSendTimebaseRange t5 = new ThreadSendTimebaseRange();
-            t5.start();
-            ThreadSendTimebaseReference t6 = new ThreadSendTimebaseReference();
-            t6.start();
-            ThreadSendTriggerTVSource t7 = new ThreadSendTriggerTVSource();
-            t7.start();
-            ThreadSendTriggerMode t8 = new ThreadSendTriggerMode();
-            t8.start();
-            ThreadSendTriggerEdgeSlope t9 = new ThreadSendTriggerEdgeSlope();
-            t9.start();
+            try {
+                //用输出流发送数据
+                OutputStream.write(("*RST\r\n*CLS\r\n*IDN?\r\n:AUToscale\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+//            ThreadSendRST t0 = new ThreadSendRST();
+//            t0.start();
+//            ThreadSendCLS t1 = new ThreadSendCLS();
+//            t1.start();
+//            ThreadSendIDN t2 = new ThreadSendIDN();
+//            t2.start();
+//            ThreadSendAUToscale t3 = new ThreadSendAUToscale();
+//            t3.start();
+//            ThreadSendChanelProbe t4 = new ThreadSendChanelProbe();
+//            t4.start();
+//            ThreadSendChanelRange t10 = new ThreadSendChanelRange();
+//            t10.start();
+//            ThreadSendTimebaseRange t5 = new ThreadSendTimebaseRange();
+//            t5.start();
+//            ThreadSendTimebaseReference t6 = new ThreadSendTimebaseReference();
+//            t6.start();
+//            ThreadSendTriggerTVSource t7 = new ThreadSendTriggerTVSource();
+//            t7.start();
+//            ThreadSendTriggerMode t8 = new ThreadSendTriggerMode();
+//            t8.start();
+//            ThreadSendTriggerEdgeSlope t9 = new ThreadSendTriggerEdgeSlope();
+//            t9.start();
+
         }
     }
 
@@ -269,7 +351,16 @@ public class MainActivity extends AppCompatActivity {
     //创建分析数据线程
     class ThreadAnalyze extends Thread{
         public void run(){
-
+            ThreadSendMeasureSource t0 = new ThreadSendMeasureSource();
+            t0.start();
+            ThreadSendWaveFormFormat t1 = new ThreadSendWaveFormFormat();
+            t1.start();
+            ThreadSendWaveFormPoints t2 = new ThreadSendWaveFormPoints();
+            t2.start();
+            ThreadSendWaveFormPreamble t3 = new ThreadSendWaveFormPreamble();
+            t3.start();
+            ThreadReadPreamble t4 = new ThreadReadPreamble();
+            t4.start();
         }
     }
     //用线程创建SurfaceView画图
@@ -292,8 +383,8 @@ public class MainActivity extends AppCompatActivity {
             task = new TimerTask() {
                 @Override
                 public void run() {
-                    int cy = centerY - (int) (200 * Math.cos((cx - X_OFFSET) * 2 * Math.PI / 400));
-                    Canvas canvas = holder.lockCanvas(new Rect(cx, cy - 200, cx + 2, cy + 2));
+                    int cy = centerY - (int) (100 * Math.sin((cx - 5) * 2 * Math.PI / 150));
+                    Canvas canvas = holder.lockCanvas(new Rect(cx, cy - 2, cx + 2, cy + 2));
                     canvas.drawPoint(cx, cy, paint);
                     cx++;
 
@@ -346,12 +437,8 @@ public class MainActivity extends AppCompatActivity {
                     //获取socket的输入流和输出流
                     InputStream = socket.getInputStream();
                     OutputStream = socket.getOutputStream();
-
-                    //新建一个线程读数据
-                    ThreadReadData t1 = new ThreadReadData();
-                    t1.start();
-//                    ThreadReadPreamble t2 = new ThreadReadPreamble();
-//                    t2.start();
+                    ThreadReadPreamble t2 = new ThreadReadPreamble();
+                    t2.start();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -361,6 +448,112 @@ public class MainActivity extends AppCompatActivity {
 
     //用线程执行读取服务器发来的数据
     class ThreadReadData extends Thread {
+        public void run() {
+            //定义一个变量用于储存服务器发来的数据
+            String textdata;
+            //根据RD的值来判断是否执行读数据
+            while (RD) {
+                try {
+                    //定义一个字节集,存放输入的数据,缓存区大小为2048字节
+                    final byte[] ReadBuffer = new byte[2048];
+                    //用于存放数据量
+                    final int ReadBufferLength;
+                    //从输入流获取服务器发来的数据和数据宽度
+                    //ReadBuffer为参考变量，在这里会改变为数据
+                    //输入流的返回值是服务器发来的数据宽度
+                    ReadBufferLength = InputStream.read(ReadBuffer);
+
+                    //验证数据宽度,如果为-1则已经断开了链接
+                    if (ReadBufferLength == -1) {
+                        RD = false;
+                        socket.close();
+                        socket = null;
+                    } else {
+                        //如果有数据正常返回则进行处理显示
+                        /*
+                            这个地方有个很大的坑，让我搞了不少的时间
+                            我用其他语言写的Web服务器程序，默认编码是gb2312
+                            AS的默认编码是utf-8
+                            在获取服务器发来的数据的时候，程序已经对这段gb2312的数据进行编码...
+                            至于编码是什么就不知道了
+                            我研究了很长时间，怎么转码也不对，越转越乱
+                            最后测试出来是gb2312编码已经被转码了，我就先恢复gb2312编码
+                            然后转成程序不会乱码的utf-8
+                            如果目标服务器编码是utf8的话就不用转了
+                        */
+
+                        //先恢复成GB2312编码
+                        textdata = new String(ReadBuffer, 0, ReadBufferLength, "GB2312");//原始编码数据
+                        String textdata5 = new String(ReadBuffer, 6, 4,"GB2312");
+                        String show0 = new String(textdata.getBytes(), "UTF-8");
+//                        StringBuilder show = new StringBuilder(show0);
+//                        StringBuilder show1 = new StringBuilder(String.valueOf(ReadBufferLength));
+//                        show = show.append("共").append(show1).append("个字符。").append("共").append(textdata5).append("个数据。");
+                        //转为UTF-8编码后显示在编辑框中
+                        receive_EditText.setText(show0);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    //用线程执行读取服务器发来的数据
+    class ThreadReadPreamble extends Thread {
+        public void run() {
+            //定义一个变量用于储存服务器发来的数据
+            String textdata;
+            //根据RD的值来判断是否执行读数据
+            while (RD) {
+                try {
+                    //定义一个字节集,存放输入的数据,缓存区大小为2048字节
+                    final byte[] ReadBuffer = new byte[409600];
+                    //用于存放数据量
+                    final int ReadBufferLength;
+                    //从输入流获取服务器发来的数据和数据宽度
+                    //ReadBuffer为参考变量，在这里会改变为数据
+                    //输入流的返回值是服务器发来的数据宽度
+                    ReadBufferLength = InputStream.read(ReadBuffer);
+
+                    //验证数据宽度,如果为-1则已经断开了链接
+                    if (ReadBufferLength == -1) {
+                        RD = false;
+                        socket.close();
+                        socket = null;
+                    } else {
+                        //如果有数据正常返回则进行处理显示
+                        /*
+                            这个地方有个很大的坑，让我搞了不少的时间
+                            我用其他语言写的Web服务器程序，默认编码是gb2312
+                            AS的默认编码是utf-8
+                            在获取服务器发来的数据的时候，程序已经对这段gb2312的数据进行编码...
+                            至于编码是什么就不知道了
+                            我研究了很长时间，怎么转码也不对，越转越乱
+                            最后测试出来是gb2312编码已经被转码了，我就先恢复gb2312编码
+                            然后转成程序不会乱码的utf-8
+                            如果目标服务器编码是utf8的话就不用转了
+                        */
+
+                        //先恢复成GB2312编码
+                        textdata = new String(ReadBuffer, 0, ReadBufferLength, "GB2312");//原始编码数据
+                        String textdata5 = new String(ReadBuffer, 6, 4,"GB2312");
+                        String show0 = new String(textdata.getBytes(), "UTF-8");
+                        StringBuilder show = new StringBuilder(show0);
+                        StringBuilder show1 = new StringBuilder(String.valueOf(ReadBufferLength));
+                        show = show.append("共").append(show1).append("个字符。").append("共").append(textdata5).append("个数据。");
+                        //转为UTF-8编码后显示在编辑框中
+                        receive_EditText.setText(show);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    //用线程执行读取服务器发来的数据
+    class ThreadReadValues extends Thread {
         public void run() {
             //定义一个变量用于储存服务器发来的数据
             String textdata;
@@ -411,7 +604,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
     //用线程发送数据
     class ThreadSendData extends Thread{
         public void run(){
@@ -754,6 +946,118 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //用输出流发送数据
                 OutputStream.write((":DIGitize CHANnel1\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:MEASure:SOURce CHANnel1
+    class ThreadSendMeasureSource extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":MEASure:SOURce CHANnel1\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:MEASure:FREQuency?
+    class ThreadSendMeasureFrequency extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":MEASure:FREQuency?\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:MEASure:VPP?
+    class ThreadSendMeasureVpp extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":MEASure:VPP?\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:WAVeform:FORMat BYTE
+    class ThreadSendWaveFormFormat extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":WAVeform:FORMat BYTE\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:WAVeform:POINts 1000
+    class ThreadSendWaveFormPoints extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":WAVeform:POINts 1000\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:WAVeform:PREamble?
+    class ThreadSendWaveFormPreamble extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":WAVeform:PREamble?\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:WAVeform:DATA?
+    class ThreadSendWaveFormData extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":WAVeform:DATA?\r\n").getBytes());
+                //发送数据之后会自动断开连接，所以，恢复为最初的状态
+                //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    //用线程发送:WAVeform:FORMat ASCii
+    class ThreadSendWaveFormFormatAscii extends Thread {
+        public void run() {
+            try {
+                //用输出流发送数据
+                OutputStream.write((":WAVeform:FORMat ASCii\r\n").getBytes());
                 //发送数据之后会自动断开连接，所以，恢复为最初的状态
                 //有个坑要说一下，因为发送完数据还得等待服务器返回，所以，不能把Socket也注销掉
             } catch (Exception e) {

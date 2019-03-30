@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">OscilloscopeReProgramming</string>
+    <string-array name="SCPI">
+        <item>*IDN？</item>
+        <item>*CLS</item>
+        <item>*RST</item>
+        <item>*ESE</item>
+        <item>*ESE？</item>
+        <item>*ESR?</item>
+        <item>*OPC</item>
+        <item>*OPC？</item>
+        <item>*SRE</item>
+        <item>*SRE？</item>
+        <item>*STB？</item>
+        <item>*TST？</item>
+        <item>*WAI</item>
+        <item>:AUToscale</item>
+        <item>:CHANnel1:PROBe 10</item>
+        <item>:CHANnel1:RANGe 8</item>
+        <item>:TIMebase:RANGe 2e-3</item>
+        <item>:TIMebase:REFerence CENTer</item>
+        <item>:TRIGger:TV:SOURCe CHANnel1</item>
+        <item>:TRIGger:MODE EDGE</item>
+        <item>:TRIGger:EDGE:SLOPe POSitive</item>
+        <item>:MEASure:SOURce CHANnel1</item>
+        <item>:MEASure:FREQuency?</item>
+        <item>:MEASure:VPP?</item>
+        <item>:WAVeform:FORMat BYTE</item>
+        <item>:WAVeform:POINts 1000</item>
+        <item>:WAVeform:PREamble?</item>
+        <item>:WAVeform:DATA?</item>
+        <item>:ACQuire:TYPE NORMal</item>
+        <item>:ACQuire:COMPlete 100</item>
+        <item>:DIGitize CHANnel1</item>
+        <item>:WAVeform:FORMat ASCii</item>
+    </string-array>
+</resources>
