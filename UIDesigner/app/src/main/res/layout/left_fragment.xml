@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_constraintHorizontal_chainStyle="spread"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/left_linearlayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/margin"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        app:layout_constraintBottom_toTopOf="@id/spinner"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1">
+
+        <EditText
+            android:id="@+id/editText_ip"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="#3d45ff"
+            android:hint="ip"
+            android:inputType="textPersonName"
+            android:textSize="@dimen/textSize"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Switch
+            android:id="@+id/switch_connect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_weight="1"
+            android:background="#37ff32"
+            android:text="连接"
+            android:textSize="@dimen/textSize"
+            app:layout_constraintBaseline_toBaselineOf="@+id/editText_ip"
+            app:layout_constraintLeft_toRightOf="@+id/editText_ip"
+            app:layout_constraintStart_toEndOf="@+id/editText_ip"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_time"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:text="时基信息"
+            android:textSize="@dimen/textSize"
+            app:layout_constraintBaseline_toBaselineOf="@+id/switch_connect"
+            app:layout_constraintLeft_toRightOf="@+id/switch_connect"
+            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="@dimen/margin"
+        android:layout_marginBottom="@dimen/margin"
+        android:background="#f00"
+        android:entries="@array/SCPI"
+        app:layout_constraintBottom_toTopOf="@id/SurfaceView_show"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/left_linearlayout"
+        app:layout_constraintVertical_weight="1"></Spinner>
+
+    <SurfaceView
+        android:id="@+id/SurfaceView_show"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:text="Recv:"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="@dimen/margin"
+        android:layout_marginRight="@dimen/margin"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintBottom_toTopOf="@id/left_horizontalScrollView"
+        app:layout_constraintVertical_weight="7"/>
+
+    <HorizontalScrollView
+        android:id="@+id/left_horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="#393eff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SurfaceView_show"
+        app:layout_constraintVertical_weight="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/margin">
+
+            <Button
+                android:id="@+id/btn_draw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#0f0"
+                android:text="绘图" />
+
+            <Button
+                android:id="@+id/btn_autoScale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="自动测量" />
+
+            <Button
+                android:id="@+id/btn_measure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="测量" />
+
+            <Button
+                android:id="@+id/btn_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="通道" />
+
+            <Button
+                android:id="@+id/btn_trigger"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="触发" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="按钮6" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="按钮7" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin"
+                android:background="#0f0"
+                android:text="按钮8" />
+        </LinearLayout>
+
+
+    </HorizontalScrollView>
+
+</android.support.constraint.ConstraintLayout>

@@ -3,7 +3,7 @@ package com.example.mikejia.oscilloscopereprogramming;
 public class Read {
 
 
-    synchronized public static void ReadText(){
+    public static void ReadText(){
         //定义一个变量用于储存服务器发来的数据
         String textdata;
         //根据RD的值来判断是否执行读数据
@@ -47,7 +47,14 @@ public class Read {
                     //转为UTF-8编码后显示在编辑框中
                     MainActivity.receive_EditText.setText(show0);
                     if (show0.startsWith("#8000") && DataTransfer.mShow == null){
-                        DataTransfer.mShow = show0;
+                        float[] processedData;                                      //定义处理过数据的数据
+                        DataProcessing dataProcessing = new DataProcessing(show0);  //创建处理数据对象
+                        processedData = dataProcessing.DataSplit();                 //将数据处理
+                        if(MainActivity.data != null){                              //如果主函数中的data不为空则执行
+                            for (int i = 0; i < processedData.length; i++){         //赋值
+                                MainActivity.data.add(processedData[i]);
+                            }
+                        }
                     }
                 }
             } catch (Exception e) {

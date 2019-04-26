@@ -9,7 +9,7 @@ import java.util.ArrayList;
 //import java.util.List;
 public class DataProcessing {
 
-    public static String mshow;
+//    public static String mshow;
 
 //    private ArrayList<float[]> inBuf = new ArrayList<float[]>();
 //    private boolean isTransfering = false;

@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     //变量
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     public static Socket socket = null;// Socket变量
     public static OutputStream OutputStream = null;//定义数据输出流,用于发出去
     public static InputStream InputStream = null;//定义数据输入流,用于写进来
+    public static ArrayList<Float> data = new ArrayList<>();
 
     public static SurfaceView msurfaceView;
     public static SurfaceHolder holder;
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
     ThreadSendData Digitize = new ThreadSendData(":DIGitize CHANnel1");
     ThreadSendData WaveFormFormatAscii = new ThreadSendData(":WAVeform:FORMat ASCii");
     //并创建一个新的线程，用于初始化socket
-    ConnectThread Connect_thread = new ConnectThread();
+
 
 //    ThreadSendData OPC2 = new ThreadSendData("*IDN?");
 //    ThreadSendData SRE = new ThreadSendData("*IDN?");
@@ -223,6 +225,7 @@ public class MainActivity extends AppCompatActivity {
             buttontitle = false;
             //读数据线程可以执行
             RD = true;
+            ConnectThread Connect_thread = new ConnectThread();
             Connect_thread.start();
             //改变按钮标题
             button_connect.setText("断开连接");
@@ -243,7 +246,21 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+    //绘图按钮按下
+    public void analyze(View view) throws IOException{
+        if(buttontitle2 == true){
+            buttontitle2 = false;
+            ThreadDraw draw = new ThreadDraw();
+            draw.start();
+            button_draw.setText("结束绘图");
+        }else {
+            button_draw.setText("开始绘图");
+            buttontitle2 = true;
+        }
+//        ThreadDraw draw = new ThreadDraw();
+//        draw.start();
 
+    }
     //验证编辑框内容是否合法
     public boolean thisif() {
         //定义一个信息框留作备用
@@ -264,20 +281,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void analyze(View view) throws IOException{
-        if(buttontitle2 = true){
-            buttontitle2 = false;
-            button_draw.setText("开始绘图");
-            ThreadDraw draw = new ThreadDraw();
-            draw.start();
-        }else {
-            buttontitle2 = false;
-            button_draw.setText("结束绘图");
-            Draw.task.cancel();
-            Draw.task = null;
-        }
 
-    }
 
 
     //信息框按钮按下事件

@@ -1,0 +1,3 @@
+requestWindowFeature(Window.FEATURE_NO_TITLE);//去标题栏
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//全屏
+        setContentView(R.layout.main_activity);//加载新的布局

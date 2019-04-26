@@ -17,8 +17,8 @@ import static com.example.mikejia.oscilloscopereprogramming.MainActivity.paint;
 public class Draw {
 
     private static final int X_OFFSET = 50;
-    private static float[] mdata = DataTransfer.getData();
-    //private static float[] mdata = {-7.87475f,-7.85522f, -7.81616f, -7.76538f, -7.69506f, -7.60913f, -7.51538f, -7.41381f, -7.29663f, -7.16381f, -7.01147f, -6.84741f, -6.67163f, -6.48803f, -6.28491f};
+//    public static Float[] mdata;
+    private static float[] mdata = {-7.87475f,-7.85522f, -7.81616f, -7.76538f, -7.69506f, -7.60913f, -7.51538f, -7.41381f, -7.29663f, -7.16381f, -7.01147f, -6.84741f, -6.67163f, -6.48803f, -6.28491f};
     private static double cy;
     private static int cx = X_OFFSET;
     private static Timer timer = new Timer();
@@ -26,6 +26,11 @@ public class Draw {
 
 //    final double[] data
     public static void draw(){
+
+//        //如果data不为空，则把data里的数据转入mdata
+//        if(MainActivity.data != null){
+//            mdata = MainActivity.data.toArray(new Float[MainActivity.data.size()]);
+//        }
 
         drawBack(holder);
 //        mdata = data;
@@ -37,23 +42,29 @@ public class Draw {
 
             @Override
             public void run() {
+                if(mdata.length != 0){
+                    int index = cx -X_OFFSET;
+                    int centerY = msurfaceView.getHeight() / 2;
+                    float cy = centerY - mdata[index] * 40;
+//                float voltage = ((cy - 3.2768f) * 6.1035f) - 1.8f;
+//                float time = ((index - 0) * 2) - 1;
+                    Canvas canvas = holder.lockCanvas(new Rect(cx, 0, cx+mdata.length, MainActivity.msurfaceView.getHeight()));
+                    canvas.drawPoint(cx, cy, paint);
+                    cx++;
+                    if(cx >= X_OFFSET + mdata.length){
+                        task.cancel();
+                        task = null;
+                    }
+                    holder.unlockCanvasAndPost(canvas);
+                }else{
+                    task.cancel();
+                    task = null;
+                }
 //                cy = data[cx];
 //                Canvas canvas = holder.lockCanvas(new Rect(cx, (int)cy - 2, cx + 2, (int) cy + 2));
 //                canvas.drawPoint(cx, (float)cy, paint);
 //                cx++;
-                int index = cx -X_OFFSET;
-                int centerY = msurfaceView.getHeight() / 2;
-                float cy = centerY - mdata[index] * 40;
-//                float voltage = ((cy - 3.2768f) * 6.1035f) - 1.8f;
-//                float time = ((index - 0) * 2) - 1;
-                Canvas canvas = holder.lockCanvas(new Rect(cx, 0, cx+mdata.length, MainActivity.msurfaceView.getHeight()));
-                canvas.drawPoint(cx, cy, paint);
-                cx++;
-                if(cx >= X_OFFSET + mdata.length){
-                    task.cancel();
-                    task = null;
-                }
-                holder.unlockCanvasAndPost(canvas);
+
             }
         };
         timer.schedule(task, 0, 30);
