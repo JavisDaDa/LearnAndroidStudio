@@ -20,99 +20,103 @@ public class TriggerRightFragment extends Fragment{
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.measure_right_fragment, container, false);
-        RecyclerView measureRecyclerView = view.findViewById(R.id.measure_fragment_recycler_view);
+        View view = inflater.inflate(R.layout.trigger_right_fragment, container, false);
+        RecyclerView TriggerRecyclerView = view.findViewById(R.id.trigger_fragment_recycler_view);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-        measureRecyclerView.setLayoutManager(layoutManager);
-        MeasureAdapter adapter = new MeasureAdapter(getMeasureFunction());
-        measureRecyclerView.setAdapter(adapter);
+        TriggerRecyclerView.setLayoutManager(layoutManager);
+        TriggerAdapter adapter = new TriggerAdapter(getTriggerFunction());
+        TriggerRecyclerView.setAdapter(adapter);
         return view;
     }
 
     //设置测量的功能
-    private List<Function> getMeasureFunction(){
-        List<Function> measureList = new ArrayList<>();
-        Function measure = new Function();
-        measure.setFunction("源1");
-        measureList.add(measure);
+    private List<Function> getTriggerFunction(){
+        List<Function> triggerList = new ArrayList<>();
+        Function trigger = new Function();
+        trigger.setFunction("Edge: 1");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("源2");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("Edge: 2");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("幅度");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("Edge: 上升沿");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("平均值");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("Edge: 下降沿");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("低值");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("Edge: 交变沿");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("计数");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("Edge: 任一沿");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("延迟时间");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("自动触发");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("占空比");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("标准触发");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("下降时间");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("直流耦合");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("频率");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("交流耦合");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("最大电平");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("低频抑制耦合");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("最小电平");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("开启噪声抑制");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("峰峰值");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("关闭噪声抑制");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("周期");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("开启高频抑制");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("上升时间");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("关闭高频抑制");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("设置阈值");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("外部单位：V");
+        triggerList.add(trigger);
 
 
-        measure = new Function();
-        measure.setFunction("清除测量");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("外部单位：A");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("统计信息开启");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("探头：分贝");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("统计信息关闭");
-        measureList.add(measure);
+        trigger = new Function();
+        trigger.setFunction("探头：比率");
+        triggerList.add(trigger);
 
-        measure = new Function();
-        measure.setFunction("复位统计信息");
-        measureList.add(measure);
-        return measureList;
+        trigger = new Function();
+        trigger.setFunction("1M阻抗");
+        triggerList.add(trigger);
+
+        trigger = new Function();
+        trigger.setFunction("50阻抗");
+        triggerList.add(trigger);
+        return triggerList;
     }
 
 
@@ -121,8 +125,8 @@ public class TriggerRightFragment extends Fragment{
         super.onActivityCreated(savedInstanceState);
     }
 
-    class MeasureAdapter extends RecyclerView.Adapter<MeasureAdapter.ViewHolder>{
-        private List<Function> mMeasureList;
+    class TriggerAdapter extends RecyclerView.Adapter<TriggerAdapter.ViewHolder>{
+        private List<Function> mTriggerList;
         class  ViewHolder extends RecyclerView.ViewHolder{
 
             Button measureFunction;
@@ -132,8 +136,8 @@ public class TriggerRightFragment extends Fragment{
             }
         }
 
-        public MeasureAdapter(List<Function> MeasureList){
-            mMeasureList = MeasureList;
+        public TriggerAdapter(List<Function> TriggerList){
+            mTriggerList = TriggerList;
         }
 
         @NonNull
@@ -144,7 +148,7 @@ public class TriggerRightFragment extends Fragment{
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Function measure = mMeasureList.get(holder.getAdapterPosition());
+                    Function measure = mTriggerList.get(holder.getAdapterPosition());
                     Log.i("jyd", measure.getFunction());
 //                    Toast.makeText(activity, "您点击了"+measure.getFunction().toString(), Toast.LENGTH_LONG).show();
                 }
@@ -154,13 +158,13 @@ public class TriggerRightFragment extends Fragment{
 
         @Override
         public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-            Function measure = mMeasureList.get(position);
+            Function measure = mTriggerList.get(position);
             holder.measureFunction.setText(measure.getFunction());
         }
 
         @Override
         public int getItemCount() {
-            return mMeasureList.size();
+            return mTriggerList.size();
         }
     }
 

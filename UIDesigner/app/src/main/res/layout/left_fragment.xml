@@ -18,31 +18,32 @@
         android:layout_marginRight="@dimen/margin"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        app:layout_constraintBottom_toTopOf="@id/spinner"
+        app:layout_constraintBottom_toTopOf="@id/spinner_linear"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_weight="1">
+        app:layout_constraintVertical_weight="2">
 
         <EditText
             android:id="@+id/editText_ip"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="#3d45ff"
+            android:text="192.168.1.3"
             android:hint="ip"
             android:inputType="textPersonName"
             android:textSize="@dimen/textSize"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Switch
-            android:id="@+id/switch_connect"
+        <Button
+            android:id="@+id/button_connect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin"
             android:layout_weight="1"
-            android:background="#37ff32"
+            android:onClick="connect"
+            android:background="#feff51"
             android:text="连接"
             android:textSize="@dimen/textSize"
             app:layout_constraintBaseline_toBaselineOf="@+id/editText_ip"
@@ -50,36 +51,68 @@
             app:layout_constraintStart_toEndOf="@+id/editText_ip"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/text_time"
+        <Button
+            android:id="@+id/btn_minimize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin"
             android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:text="时基信息"
+            android:text="缩小"
+            android:background="#37e424"
             android:textSize="@dimen/textSize"
-            app:layout_constraintBaseline_toBaselineOf="@+id/switch_connect"
-            app:layout_constraintLeft_toRightOf="@+id/switch_connect"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_connect"
+            app:layout_constraintLeft_toRightOf="@+id/button_connect"
+            app:layout_constraintTop_toTopOf="parent" />
+        <Button
+            android:id="@+id/btn_maximize"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin"
+            android:layout_weight="1"
+            android:background="#37e424"
+            android:text="放大"
+            android:textSize="@dimen/textSize"
+            app:layout_constraintBaseline_toBaselineOf="@+id/button_connect"
+            app:layout_constraintLeft_toRightOf="@+id/button_connect"
             app:layout_constraintTop_toTopOf="parent" />
     </LinearLayout>
 
+<LinearLayout
+    android:id="@+id/spinner_linear"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:orientation="horizontal"
+    android:layout_marginLeft="@dimen/margin"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="@dimen/margin"
+    android:layout_marginBottom="@dimen/margin"
+    app:layout_constraintBottom_toTopOf="@id/SurfaceView_show"
+    app:layout_constraintLeft_toRightOf="parent"
+    app:layout_constraintRight_toLeftOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/left_linearlayout"
+    app:layout_constraintVertical_weight="2">
 
+    <EditText
+        android:id="@+id/editText_message"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:hint="Receive from the server"
+        android:textSize="@dimen/textSize"
+        android:layout_weight="1"/>
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#000"
+        android:layout_weight="0.001"/>
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginLeft="@dimen/margin"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="@dimen/margin"
-        android:layout_marginBottom="@dimen/margin"
-        android:background="#f00"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:entries="@array/SCPI"
-        app:layout_constraintBottom_toTopOf="@id/SurfaceView_show"
-        app:layout_constraintLeft_toRightOf="parent"
-        app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/left_linearlayout"
-        app:layout_constraintVertical_weight="1"></Spinner>
+        ></Spinner>
+</LinearLayout>
+
 
     <SurfaceView
         android:id="@+id/SurfaceView_show"
@@ -89,7 +122,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginLeft="@dimen/margin"
         android:layout_marginRight="@dimen/margin"
-        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintTop_toBottomOf="@+id/spinner_linear"
         android:layout_marginTop="@dimen/margin"
         app:layout_constraintBottom_toTopOf="@id/left_horizontalScrollView"
         app:layout_constraintVertical_weight="7"/>
@@ -97,37 +130,40 @@
     <HorizontalScrollView
         android:id="@+id/left_horizontalScrollView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
-        android:background="#393eff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SurfaceView_show"
+        android:padding="@dimen/margin"
         app:layout_constraintVertical_weight="1">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/margin">
+            android:layout_gravity="center_vertical">
 
             <Button
                 android:id="@+id/btn_draw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="#0f0"
                 android:text="绘图" />
+            <Button
+                android:id="@+id/btn_clear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="清除波形数据"/>
 
             <Button
                 android:id="@+id/btn_autoScale"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
                 android:text="自动测量" />
 
             <Button
@@ -135,7 +171,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
                 android:text="测量" />
 
             <Button
@@ -143,7 +178,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
                 android:text="通道" />
 
             <Button
@@ -151,29 +185,28 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
                 android:text="触发" />
 
             <Button
+                android:id="@+id/btn_ascii"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
-                android:text="按钮6" />
+                android:text="Ascii型" />
 
             <Button
+                android:id="@+id/btn_data"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
-                android:text="按钮7" />
+                android:text="Data1000" />
 
             <Button
+                android:id="@+id/btn_data2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/margin"
-                android:background="#0f0"
-                android:text="按钮8" />
+                android:text="Data?" />
         </LinearLayout>
 
 

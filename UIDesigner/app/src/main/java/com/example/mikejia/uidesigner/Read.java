@@ -1,5 +1,11 @@
 package com.example.mikejia.uidesigner;
 
+import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class Read {
 
 
@@ -9,15 +15,19 @@ public class Read {
         //根据RD的值来判断是否执行读数据
         while(MainActivity.RD){
             try {
-                //定义一个字节集,存放输入的数据,缓存区大小为2048字节
-                final byte[] ReadBuffer = new byte[409600];
+                //定义一个字节集,存放输入的数据,缓存区大小为40960字节
+                final byte[] ReadBuffer = new byte[40960];
                 //用于存放数据量
-                final int ReadBufferLength;
+                int ReadBufferLength = 0;
+                if (MainActivity.InputStream.available() > 0 == false){
+                    continue;
+                }else {
+                    Thread.sleep(300);
+                }
                 //从输入流获取服务器发来的数据和数据宽度
                 //ReadBuffer为参考变量，在这里会改变为数据
                 //输入流的返回值是服务器发来的数据宽度
                 ReadBufferLength = MainActivity.InputStream.read(ReadBuffer);
-
                 //验证数据宽度,如果为-1则已经断开了链接
                 if (ReadBufferLength == -1) {
                     MainActivity.RD = false;
@@ -39,23 +49,14 @@ public class Read {
 
                     //先恢复成GB2312编码
                     textdata = new String(ReadBuffer, 0, ReadBufferLength, "GB2312");//原始编码数据
-                    String textdata5 = new String(ReadBuffer, 6, 4, "GB2312");
+//                    String textdata5 = new String(ReadBuffer, 6, 4, "GB2312");
                     String show0 = new String(textdata.getBytes(), "UTF-8");
-//                        StringBuilder show = new StringBuilder(show0);
-//                        StringBuilder show1 = new StringBuilder(String.valueOf(ReadBufferLength));
-//                        show = show.append("共").append(show1).append("个字符。").append("共").append(textdata5).append("个数据。");
-                    //转为UTF-8编码后显示在编辑框中
-//                    MainActivity.receive_EditText.setText(show0);
-//                    if (show0.startsWith("#8000") && DataTransfer.mShow == null){
-//                        float[] processedData;                                      //定义处理过数据的数据
-//                        DataProcessing dataProcessing = new DataProcessing(show0);  //创建处理数据对象
-//                        processedData = dataProcessing.DataSplit();                 //将数据处理
-//                        if(MainActivity.data != null){                              //如果主函数中的data不为空则执行
-//                            for (int i = 0; i < processedData.length; i++){         //赋值
-//                                MainActivity.data.add(processedData[i]);
-//                            }
-//                        }
-//                    }
+                    if (show0.startsWith("#8000")){
+                        MainActivity.data.append(show0);
+                    }
+                    Log.i("jyd", show0);
+                    Log.i("jyd_data", MainActivity.data.toString());
+                    MainActivity.receive_EditText.setText(show0);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -63,44 +64,4 @@ public class Read {
         }
 
     }
-
-//    synchronized public static float[] ReadData(){
-//        float[] data = {3.21f};
-//        DataProcessing dataProcessing;
-//        String show0;
-//        //定义一个变量用于储存服务器发来的数据
-//        String textdata;
-//        //根据RD的值来判断是否执行读数据
-//        while (MainActivity.RD) {
-//            try {
-//                final byte[] ReadBuffer = new byte[409600];
-//                //用于存放数据量
-//                final int ReadBufferLength;
-//                ReadBufferLength = MainActivity.InputStream.read(ReadBuffer);
-//
-//                //验证数据宽度,如果为-1则已经断开了链接
-//                if (ReadBufferLength == -1) {
-//                    MainActivity.RD = false;
-//                    MainActivity.socket.close();
-//                    MainActivity.socket = null;
-//                } else {
-//                    textdata = new String(ReadBuffer, 0, ReadBufferLength, "GB2312");//原始编码数据
-//                    show0 = new String(textdata.getBytes(), "UTF-8");
-//                    dataProcessing = new DataProcessing(show0);
-//                    data = dataProcessing.DataSplit();
-//                    StringBuilder show = new StringBuilder(show0);
-//                    StringBuilder show1 = new StringBuilder(String.valueOf(data.length));
-//                    show = show.append("共").append(show1).append("个字符。");
-//                    MainActivity.receive_EditText.setText(show);
-//                }
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//        }
-//        return data;
-//    }
-//
-//    public static void ReadPreamble(){
-//
-//    }
 }
